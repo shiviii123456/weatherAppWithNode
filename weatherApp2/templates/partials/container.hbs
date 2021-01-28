@@ -1,0 +1,18 @@
+<div class="top-container">
+    <div class="container">
+        <div class="header">
+            <span class="city" id="city">Searched Places</span>
+        </div>
+        {{#each city}}
+        <div class="header wrapper">
+            <span class="citys" style="color:#0275d8">{{this.names}}</span>
+            <span style="color:#0275d8">|</span>
+            <span class="citys">{{this.temperature}}<span>℃</span></span>
+            <span style="color:#0275d8">|</span>
+            <span class="citys" style="color:#0275d8">{{this.condition}}</span>
+            <span style="color:#0275d8">|</span>
+            <span class="citys">{{this.date}}</span>
+        </div>
+        {{/each}}
+    </div>
+</div>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather</title>
+    <link rel="stylesheet" href="style.css">
+
+
+<body>
+    {{>navbar}}
+    <div class="container">
+        </head>
+        <div class="cont">
+            <div class="top-container">
+                <div class="container">
+                    <div class="header">
+                        <span class="city" id="city">London</span>
+                    </div>
+                    <span class="weather-icon"><img id="images"
+                            src="https://raw.githubusercontent.com//steeven7/Weather_App/master/assets/unknown.png"
+                            alt="icon for forecast" /></span>
+                    <div class="weather">
+                        <span id="desc">Hanoi</span>
+                    </div>
+                    <div class="temp">Current Temp: <span id="temperature">10 ℃</span></div>
+                    <button type="button" id="btnn">Use Current Location</button>
+                    <form>
+                        <div class="search">
+                            <input type="text" id="location" class="location" placeholder="Search city" />
+                            <button type="submit" id="btn">Search</button>
+                        </div>
+                    </form>
+                </div>
+                {{!-- {{>container}} --}}
+                <div class="top-container">
+                    <div class="container" id="header-top">
+                        <div class="header">
+                            <span class="city" id="city">Searched Places</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            const func = async () => {
+                try {
+                    const res = await fetch("/api");
+                    const result = await res.json();
+                    console.log(result);
+                    for (let i = 0; i < 4; i++) {
+                        const header = document.createElement("div");
+
+                        header.classList.add('header', 'wrapper');
+                        const date = document.createElement("span");
+                        date.className = "citys"
+                        date.style = "color:#0275d8";
+                        const cities = document.createElement("span");
+                        cities.className = "citys"
+                        const condition = document.createElement("span");
+                        condition.className = "citys"
+                        const tempe = document.createElement("span");
+                        tempe.className = "citys"
+                        tempe.style = "color:#0275d8";
+                        date.textContent = result[i].date;
+                        cities.textContent = result[i].names;
+                        condition.textContent = result[i].condition;
+                        tempe.textContent = result[i].temperature;
+                        header.append(cities, tempe, condition, date);
+                        document.body.append(header);
+                        document.getElementById("header-top").appendChild(header);
+                    }
+                }
+                catch (err) {
+                    console.log(err);
+                }
+            }
+            document.addEventListener('DOMContentLoaded', func);
+        </script>
+        <script src="index.js"></script>
+</body>
+
+</html>
