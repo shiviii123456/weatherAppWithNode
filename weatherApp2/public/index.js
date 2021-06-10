@@ -1,4 +1,5 @@
 //calling the route to get the data
+
 const forms = document.querySelector("form");
 const search = document.getElementById("location");
 const button = document.getElementById("btn");
@@ -8,9 +9,11 @@ let temp = document.getElementById("temperature");
 let img = document.getElementById("images");
 let btn = document.getElementById("btnn");
 button.addEventListener("click", func1);
+let convert;
 async function func1(e) {
     try {
         e.preventDefault();
+
         let y = search.value;
         console.log(y);
         search.value = "";
@@ -18,10 +21,15 @@ async function func1(e) {
         desc.innerHTML = "loading...";
         city.innerHTML = "loading...";
 
+
         const response = await fetch(`/weather/${y}`);
         const data = await response.json();
         console.log(data.condition);
-        let convert = data.temperature - 273.15;
+        if (data.temperature === "")
+            convert = "";
+        else
+            convert = data.temperature - 273.15;
+
         temp.innerHTML = convert.toFixed(2) + "℃";
         desc.innerHTML = data.condition;
         city.innerHTML = data.names;
@@ -59,7 +67,9 @@ btn.addEventListener("click", () => {
             console.log(latitude, longitude);
             const res = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=d2a9bd89d54e4354b46bedc4d365ec05`);
             const data = await res.json();
-            const y = data.results[0].components.county;
+            console.log(data);
+            const y = data.results[0].components.city;
+            console.log(y);
             const response = await fetch(`/weather/${y}`);
             const resdata = await response.json();
             console.log(resdata.condition);
@@ -90,4 +100,11 @@ btn.addEventListener("click", () => {
             console.log(err);
         }
     })
-})
+});
+// const date = new Date();
+// const min = date.toLocaleDateString();
+// console.log(min);
+
+
+var today = new Date();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();

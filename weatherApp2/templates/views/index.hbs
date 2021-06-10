@@ -6,45 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>weather</title>
     <link rel="stylesheet" href="style.css">
-
+</head>
 
 <body>
     {{>navbar}}
-    <div class="container">
-        </head>
-        <div class="cont">
-            <div class="top-container">
-                <div class="container">
-                    <div class="header">
-                        <span class="city" id="city">London</span>
-                    </div>
-                    <span class="weather-icon"><img id="images"
-                            src="https://raw.githubusercontent.com//steeven7/Weather_App/master/assets/unknown.png"
-                            alt="icon for forecast" /></span>
-                    <div class="weather">
-                        <span id="desc">Hanoi</span>
-                    </div>
-                    <div class="temp">Current Temp: <span id="temperature">10 ℃</span></div>
-                    <button type="button" id="btnn">Use Current Location</button>
-                    <form>
-                        <div class="search">
-                            <input type="text" id="location" class="location" placeholder="Search city" />
-                            <button type="submit" id="btn">Search</button>
-                        </div>
-                    </form>
+    <div class="cont">
+        <div class="top-container">
+            <div class="container">
+                <div class="header">
+                    <span class="city" id="city">London</span>
                 </div>
-                {{!-- {{>container}} --}}
-                <div class="top-container">
-                    <div class="container" id="header-top">
-                        <div class="header">
-                            <span class="city" id="city">Searched Places</span>
-                        </div>
-                    </div>
+                <span class="weather-icon"><img id="images"
+                        src="https://raw.githubusercontent.com//steeven7/Weather_App/master/assets/unknown.png"
+                        alt="icon for forecast" /></span>
+                <div class="weather">
+                    <span id="desc">Hanoi</span>
                 </div>
-
+                <div class="temp">Current Temp: <span id="temperature">10 ℃</span></div>
+                <button type="button" id="btnn">Use Current Location</button>
+                <form>
+                    <div class="search">
+                        <input type="text" id="location" class="location" placeholder="Search city" />
+                        <button type="submit" id="btn">Search</button>
+                    </div>
+                </form>
+            </div>
+            {{!-- {{>container}} --}}
+            <div class="container" id="header-top">
+                <div class="header">
+                    <span class="city" id="city">Searched Places</span>
+                </div>
             </div>
         </div>
-
         <script>
             const func = async () => {
                 try {

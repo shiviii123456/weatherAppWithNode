@@ -5,7 +5,9 @@
 }
 
 body {
-  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(to right, #d9a7c7, #fffcdc);
   text-align: center;
   font-family: "Roboto Mono", monospace;
@@ -19,16 +21,17 @@ body {
   align-items: center;
   justify-content: center;
   height:auto;
-
+  margin:6rem;
 }
 .container {
-  margin:1rem;
+  margin:2rem 1rem;
   display: grid;
   place-content: center;
   border-radius: 5px;
   background-color: rgba(255, 248, 220, 0.514);
   box-shadow: 6px -6px 24px -6px rgba(0, 0, 0, 0.67);
 }
+
 .header {
   border: 1px solid white;
   width: 400px;
@@ -107,19 +110,31 @@ img{
   font-weight:50;
   font-size: 12px;
   text-transform: uppercase;
+  cursor: pointer;
 }
 .navbar{
   position: absolute;
   top:0;
-  height:60px;
+  height:4rem;
   width:100%;
   background-color:blanchedalmond;
   box-sizing: border-box;
   display: flex;
+  flex-wrap: wrap;
 }
 .navbar span{
   color: dimgrey;
   font-size: 30px;
   margin:auto;
   text-transform: uppercase;
+}
+@media(max-width:900px)
+{
+  .top-container{
+    flex-direction: column;
+  }
+}
+@media(max-width:600px)
+{
+  
 }
